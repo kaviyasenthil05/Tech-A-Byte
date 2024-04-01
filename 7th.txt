@@ -1,0 +1,102 @@
+<!--7th page for customer details form-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Repair Shop Form</title>
+  <script>
+    function autoFillPincode() {
+      var areaSelect = document.getElementById("area");
+      var pincodeInput = document.getElementById("pincode");
+
+      var pincodeMap = {
+        adyar: "600020",
+        guindy: "600032",
+        thiruvanmiyur: "600041",
+        saidapet: "600015",
+        velachery: "600042"
+      };
+
+      var selectedArea = areaSelect.value;
+      if (pincodeMap[selectedArea]) {
+        pincodeInput.value = pincodeMap[selectedArea];
+      }
+    }
+
+    function validateForm() {
+      var pincode = document.getElementById("pincode").value;
+      var contactNumber = document.getElementById("contactNumber").value;
+      var email = document.getElementById("email").value;
+
+      var pincodePattern = /^[0-9]{6}$/;
+      var contactNumberPattern = /^[0-9]{10}$/;
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!pincodePattern.test(pincode)) {
+        alert("Please enter a valid 6-digit pincode.");
+        return false;
+      }
+
+      if (!contactNumberPattern.test(contactNumber)) {
+        alert("Please enter a valid 10-digit contact number.");
+        return false;
+      }
+
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+<h1>Repair Shop Form</h1>
+
+<form action="/submit_form" method="post" onsubmit="return validateForm()">
+  <label for="firstName">First Name:</label><br>
+  <input type="text" id="firstName" name="firstName"><br><br>
+
+  <label for="lastName">Last Name:</label><br>
+  <input type="text" id="lastName" name="lastName"><br><br>
+
+  <label for="gadget">Gadget:</label><br>
+  <select id="gadget" name="gadget">
+    <option value="camera">Camera</option>
+    <option value="gamingConsole">Gaming Console</option>
+    <option value="phone">Phone</option>
+    <option value="watch">Watch</option>
+    <option value="earbuds">Earbuds</option>
+    <option value="laptop">Laptop</option>
+  </select><br><br>
+
+  <label for="age">Age:</label><br>
+  <input type="number" id="age" name="age"><br><br>
+
+  <label for="address">Address:</label><br>
+  <input type="text" id="address" name="address"><br><br>
+
+  <label for="area">Area:</label><br>
+  <select id="area" name="area" onchange="autoFillPincode()">
+    <option value="adyar">Adyar</option>
+    <option value="guindy">Guindy</option>
+    <option value="thiruvanmiyur">Thiruvanmiyur</option>
+    <option value="saidapet">Saidapet</option>
+    <option value="velachery">Velachery</option>
+  </select><br><br>
+
+  <label for="pincode">Pincode:</label><br>
+  <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" title="Please enter a valid 6-digit pincode" required><br><br>
+
+  <label for="contactNumber">Contact Number:</label><br>
+  <input type="text" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required><br><br>
+
+  <label for="email">Email Address:</label><br>
+  <input type="email" id="email" name="email" required><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

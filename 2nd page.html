@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Page</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+    }
+
+    .left-panel {
+      width: 30%;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .right-panel {
+      width: 70%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .category {
+      margin-bottom: 20px;
+    }
+
+    .category h2 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .category-items {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .category-items li {
+      margin-bottom: 5px;
+    }
+
+    .image-box {
+      width: 30%;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .image-box:hover img {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="category">
+        <h2>Best Preferred Brand:</h2>
+        <ul class="category-items">
+          <li>Brand 1</li>
+          <li>Brand 2</li>
+          <li>Brand 3</li>
+          <li>Brand 4</li>
+          <li>Brand 5</li>
+        </ul>
+      </div>
+      <div class="category">
+        <h2>New Launches:</h2>
+        <ul class="category-items">
+          <li>Launch 1</li>
+          <li>Launch 2</li>
+          <li>Launch 3</li>
+          <li>Launch 4</li>
+          <li>Launch 5</li>
+        </ul>
+      </div>
+      <div class="category">
+        <h2>Upcoming Launches:</h2>
+        <ul class="category-items">
+          <li>Upcoming 1</li>
+          <li>Upcoming 2</li>
+          <li>Upcoming 3</li>
+          <li>Upcoming 4</li>
+          <li>Upcoming 5</li>
+        </ul>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="image-box watches">
+        <img id="watchesImage" src="watches.jpeg.jpg" alt="Watches">
+      </div>
+      <div class="image-box mobiles">
+        <img id="mobilesImage" src="phone.jpeg.jpg" alt="Mobiles">
+      </div>
+      <div class="image-box laptops">
+        <img id="laptopsImage" src="laptop.jpeg.jpg" alt="Laptops">
+      </div>
+      <div class="image-box gaming-console">
+        <img id="gamingConsoleImage" src="gaming.jpeg.jpg" alt="Gaming Console">
+      </div>
+      <div class="image-box earphones">
+        <img id="earphonesImage" src="headphones.jpeg.jpg" alt="Earphones">
+      </div>
+      <div class="image-box camera">
+        <img id="cameraImage" src="camera.jpeg.jpg" alt="Camera">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var watchesImage = document.getElementById("watchesImage");
+    var mobilesImage = document.getElementById("mobilesImage");
+    var laptopsImage = document.getElementById("laptopsImage");
+    var gamingConsoleImage = document.getElementById("gamingConsoleImage");
+    var earphonesImage = document.getElementById("earphonesImage");
+    var cameraImage = document.getElementById("cameraImage");
+
+    watchesImage.addEventListener("click", function() {
+      window.open("watches.html", "_blank");
+    });
+
+    mobilesImage.addEventListener("click", function() {
+      window.open("phone.html", "_blank");
+    });
+
+    laptopsImage.addEventListener("click", function() {
+      window.open("laptop.html", "_blank");
+    });
+
+    gamingConsoleImage.addEventListener("click", function() {
+      window.open("gamingconsole.html", "_blank");
+    });
+
+    earphonesImage.addEventListener("click", function() {
+      window.open("headphones.html", "_blank");
+    });
+
+    cameraImage.addEventListener("click", function() {
+      window.open("camera.html", "_blank");
+    });
+  </script>
+</body>
+</html>

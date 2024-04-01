@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location and Date/Time Dropdown</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* CSS for input containers */
+    .input-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-label {
+      font-size: 24px;
+      color: #333;
+      background-color: #e0e0e0;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .input-field {
+      font-size: 20px;
+      background-color: #fff;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* CSS for repair centres */
+    .location-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .location-select {
+      margin-bottom: 10px;
+    }
+
+    #repair-centres-container {
+      display: none;
+    }
+
+    #repair-centres-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    #repair-centres-content div {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 30%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #repair-centres-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      max-width: 250px;
+      max-height: 250px;
+    }
+
+    .clickable-image {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="location-container">
+  <div class="input-container">
+    <label for="location" class="input-label">Location:</label>
+    <select id="location" class="input-field location-select" onchange="showRepairCenters()">
+      <option value="adyar">Adyar</option>
+      <option value="guindy">Guindy</option>
+      <option value="velachery">Velachery</option>
+      <option value="thiruvanmiyur">Thiruvanmiyur</option>
+      <option value="saidapet">Saidapet</option>
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label for="datetime" class="input-label">Time & Date Constraint:</label>
+    <input type="datetime-local" id="datetime" class="input-field">
+  </div>
+
+  <div class="input-container" id="repair-centres-container">
+    <label for="repair-centres" class="input-label">Repair Centres:</label>
+    <div id="repair-centres-content"></div>
+  </div>
+</div>
+
+<script>
+  function showRepairCenters() {
+    var locationSelect = document.getElementById("location");
+    var selectedLocation = locationSelect.value;
+    var repairCentresContainer = document.getElementById("repair-centres-container");
+    var repairCentresContent = document.getElementById("repair-centres-content");
+
+    var repairCentres = {
+      adyar: [
+        { name: "Fix my gadgets", image: "ph1.jpeg" },
+        { name: "ITS cell zone", image: "ph2.jpeg" },
+        { name: "The unbox store", image: "ph9.jpeg" }
+      ],
+      guindy: [
+        { name: "XI officials", image: "ph4.jpeg" },
+        { name: "Mercy store", image: "ph5.jpeg" },
+        { name: "Bytes", image: "ph6.jpeg" }
+      ],
+      velachery: [
+        { name: "APPLE", image: "ph7.jpeg" },
+        { name: "Zara Mobiles", image: "ph2.jpeg" },
+        { name: "Access", image: "ph15.jpeg" }
+      ],
+      thiruvanmiyur: [
+        { name: "Realme store", image: "ph10.jpeg" },
+        { name: "Gadget Wagon", image: "ph11.jpeg" },
+        { name: "Yaantra", image: "ph12.jpeg" }
+      ],
+      saidapet: [
+        { name: "N&N", image: "ph13.jpeg" },
+        { name: "Comfygadget", image: "ph14.jpeg" },
+        { name: "Oneplus service centre", image: "ph15.jpeg" }
+      ]
+      // Add more locations and their repair centers as needed
+    };
+
+    repairCentresContent.innerHTML = "";
+
+    if (selectedLocation in repairCentres) {
+      repairCentresContainer.style.display = "block";
+
+      var selectedCentres = repairCentres[selectedLocation];
+      selectedCentres.forEach(function(center) {
+        var centreDiv = document.createElement("div");
+        var img = document.createElement("img");
+        img.src = center.image;
+        img.alt = center.name;
+        img.classList.add("clickable-image");
+
+        var namePara = document.createElement("p");
+        namePara.textContent = center.name;
+
+        centreDiv.appendChild(img);
+        centreDiv.appendChild(namePara);
+        repairCentresContent.appendChild(centreDiv);
+      });
+    } else {
+      repairCentresContainer.style.display = "none";
+    }
+
+    attachClickEventToImages();
+  }
+
+  function redirectToPage(url) {
+    window.location.href = url;
+  }
+
+  function attachClickEventToImages() {
+    var images = document.querySelectorAll("#repair-centres-content img");
+    images.forEach(function(image) {
+      image.onclick = function() {
+        redirectToPage('fixmygadget.html'); // Replace 'https://example.com' with your desired URL
+      };
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    attachClickEventToImages();
+  });
+</script>
+
+</body>
+</html>

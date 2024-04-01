@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location and Date/Time Dropdown</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* CSS for input containers */
+    .input-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-label {
+      font-size: 24px;
+      color: #333;
+      background-color: #e0e0e0;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .input-field {
+      font-size: 20px;
+      background-color: #fff;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* CSS for repair centres */
+    .location-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .location-select {
+      margin-bottom: 10px;
+    }
+
+    #repair-centres-container {
+      display: none;
+    }
+
+    #repair-centres-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    #repair-centres-content div {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 30%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #repair-centres-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      max-width: 250px;
+      max-height: 250px;
+    }
+
+    #repair-centres-content p {
+      margin-top: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="location-container">
+  <!-- Location Dropdown -->
+  <div class="input-container">
+    <label for="location" class="input-label">Location:</label>
+    <select id="location" class="input-field location-select" onchange="showRepairCenters()">
+      <option value="adyar">Adyar</option>
+      <option value="guindy">Guindy</option>
+      <option value="velachery">Velachery</option>
+      <option value="thiruvanmiyur">Thiruvanmiyur</option>
+      <option value="saidapet">Saidapet</option>
+    </select>
+  </div>
+
+  <!-- Date/Time Input -->
+  <div class="input-container">
+    <label for="datetime" class="input-label">Time & Date Constraint:</label>
+    <input type="datetime-local" id="datetime" class="input-field">
+  </div>
+
+  <!-- Third Label for Repair Centres -->
+  <div class="input-container" id="repair-centres-container">
+    <label for="repair-centres" class="input-label">Repair Centres:</label>
+    <div id="repair-centres-content"></div>
+  </div>
+</div>
+
+<script>
+  function showRepairCenters() {
+    var locationSelect = document.getElementById("location");
+    var selectedLocation = locationSelect.value;
+    var repairCentresContainer = document.getElementById("repair-centres-container");
+    var repairCentresContent = document.getElementById("repair-centres-content");
+
+    var repairCentres = {
+      adyar: [
+        { name: "Fix my gadgets", image: "path_to_image1.jpg" },
+        { name: "ITS cell zone", image: "path_to_image2.jpg" },
+        { name: "The unbox store", image: "path_to_image3.jpg" }
+      ],
+      guindy: [
+        { name: "Fix my gadgets", image: "path_to_image4.jpg" },
+        { name: "ITS cell zone", image: "path_to_image5.jpg" },
+        { name: "The unbox store", image: "path_to_image6.jpg" }
+      ],
+      velachery: [
+        { name: "APPLE", image: "path_to_image7.jpg" },
+        { name: "Zara Mobiles", image: "path_to_image8.jpg" },
+        { name: "Access", image: "path_to_image9.jpg" }
+      ],
+      thiruvanmiyur: [
+        { name: "Realme store", image: "path_to_image10.jpg" },
+        { name: "Gadget Wagon", image: "path_to_image11.jpg" },
+        { name: "Yaantra", image: "path_to_image12.jpg" }
+      ],
+      saidapet: [
+        { name: "N&N", image: "path_to_image13.jpg" },
+        { name: "Comfygadget", image: "path_to_image14.jpg" },
+        { name: "Oneplus service centre", image: "path_to_image15.jpg" }
+      ]
+      // Add more locations and their repair centers as needed
+    };
+
+    repairCentresContent.innerHTML = ""; // Clear previous content
+
+    if (selectedLocation in repairCentres) {
+      repairCentresContainer.style.display = "block";
+
+      var selectedCentres = repairCentres[selectedLocation];
+      selectedCentres.forEach(function(center) {
+        var centreDiv = document.createElement("div");
+        var img = document.createElement("img");
+        img.src = center.image;
+        img.alt = center.name;
+
+        var namePara = document.createElement("p");
+        namePara.textContent = center.name;
+
+        centreDiv.appendChild(img);
+        centreDiv.appendChild(namePara);
+        repairCentresContent.appendChild(centreDiv);
+      });
+    } else {
+      repairCentresContainer.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

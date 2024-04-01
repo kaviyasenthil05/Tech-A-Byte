@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .dropdown-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .dropdown {
+            flex: 0 0 30%; /* Adjust the width of the dropdowns as needed */
+        }
+    </style>
+</head>
+<body>
+    <h2>Mobile Information Form</h2>
+    <form id="mobileForm" onsubmit="submitForm(event)">
+        <label for="brand">Brand Name:</label>
+        <input type="text" id="brand" name="brand" required>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+
+        <div>
+            <label>Warranty Card Availability:</label>
+            <select id="warranty" name="warranty">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="dropdown-group">
+            <div class="dropdown">
+                <label for="query1_1">Query 1:</label>
+                <select id="query1_1" name="query1_1">
+                    <option value="Option 1">Lens Issues</option>
+                    <option value="Option 2">Sensor Cleaning</option>
+                    <option value="Option 3">Shutter Repair or Replacement</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <label for="query1_2">Query 2:</label>
+                <select id="query1_2" name="query1_2">
+                    <option value="Option 1">Battery Compartment Repair</option>
+                    <option value="Option 2">Viewfinder and LCD Repair</option>
+                    <option value="Option 3">Button and Dial Repair</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <label for="query1_3">Query 3:</label>
+                <select id="query1_3" name="query1_3">
+                    <option value="Option 1">Firmware Updates</option>
+                    <option value="Option 2">Flash Repair</option>
+                    <option value="Option 3">Focus Calibration</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevents the form from submitting normally
+
+            // Add your form processing logic here
+
+            // Redirect to next page after form submission
+            window.location.href = '4th page.html'; // Replace 'next_page.html' with the desired page URL
+        }
+    </script>
+</body>
+</html>
